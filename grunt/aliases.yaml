@@ -1,0 +1,12 @@
+default:
+  - compile
+
+dist:
+  - test
+
+test:
+  - compile
+  - simplemocha
+
+compile:
+  - newer:coffee:compile
