@@ -160,7 +160,7 @@ describe("ObjectHistory", function() {
         b: "test1",
         c: 1.234
       };
-      o.observe(this.simple, ["a", "c", "d", "e"], true, false);
+      o.observe(this.simple, ["a", "c", "d", "e"], true);
       this.simple.a = 2;
       this.simple.b = "test2";
       this.simple.d = 5;

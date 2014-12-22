@@ -185,7 +185,7 @@ describe "ObjectHistory", () ->
 		it "should observe properties passed by (w/ extending)", () ->
 			@simple = a: 1, b: "test1", c: 1.234
 
-			o.observe( @simple, ["a", "c", "d", "e"], on, off )
+			o.observe( @simple, ["a", "c", "d", "e"], on )
 
 			
 			@simple.a = 2 
