@@ -160,7 +160,7 @@ describe("ObjectHistory", function() {
         b: "test1",
         c: 1.234
       };
-      o.observe(this.simple, ["a", "c", "d", "e"], true);
+      o.observe(this.simple, ["a", "c", "d", "e"], true, false);
       this.simple.a = 2;
       this.simple.b = "test2";
       this.simple.d = 5;
@@ -205,19 +205,19 @@ describe("ObjectHistory", function() {
       this.simple.b.should.be.equal("test4");
       this.simple.c.should.be.equal(1.234);
       this.simple.d.should.be.equal(5);
-      expect(this.simple.e).to.be.undefined;
+      expect(this.simple.e).to.be["null"];
       this.simple.undo();
       this.simple.a.should.be.equal(2);
       this.simple.b.should.be.equal("test4");
       this.simple.c.should.be.equal(1.234);
-      expect(this.simple.d).to.be.undefined;
-      expect(this.simple.e).to.be.undefined;
+      expect(this.simple.d).to.be["null"];
+      expect(this.simple.e).to.be["null"];
       this.simple.undo();
       this.simple.a.should.be.equal(1);
       this.simple.b.should.be.equal("test4");
       this.simple.c.should.be.equal(1.234);
-      expect(this.simple.d).to.be.undefined;
-      expect(this.simple.e).to.be.undefined;
+      expect(this.simple.d).to.be["null"];
+      expect(this.simple.e).to.be["null"];
     });
   });
   describe("#deepObserve()", function() {

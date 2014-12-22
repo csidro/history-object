@@ -227,16 +227,16 @@
 		path = [] if not path? or path is undefined
 		path = path.split( "." ) if not isType( path, "array" )
 		savePath = path.join(".")
-
+		
 		# extend the object with whitelist values here if extension is on
 		# extend only if whitelist is an array
 		if extension is on and isType( whitelist, "array" )
 			# handle every item in whitelist as paths, so we can define them with deepSet() easily
-			for path in whitelist
-				do ( path ) ->
-					# if path is undefined in the object define it with null value
-					if deepGet( obj, path ) is undefined
-						deepSet( obj, path, null, true )
+			for extendPath in whitelist
+				do ( extendPath ) ->
+					# if extendPath is undefined in the object define it with null value
+					if deepGet( obj, extendPath ) is undefined
+						deepSet( obj, extendPath, null, true )
 					return
 		# turn extension off, to be sure we only try to extend once
 		extension = off
@@ -336,11 +336,9 @@
 
 		# default to observe everything in object
 		keys = Object.keys( obj )
-
 		for prop in keys
 			do (prop) ->
 				value = obj[prop]
-
 				# build up path object
 				path.push( prop )
 				# define path as String not to pass by reference

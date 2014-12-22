@@ -265,7 +265,7 @@
   	 * End of history functions
    */
   observe = function(obj, whitelist, extension, deep, origin, path) {
-    var keys, prop, savePath, _fn, _fn1, _i, _j, _len, _len1;
+    var extendPath, keys, prop, savePath, _fn, _fn1, _i, _j, _len, _len1;
     if (extension == null) {
       extension = false;
     }
@@ -283,14 +283,14 @@
     }
     savePath = path.join(".");
     if (extension === true && isType(whitelist, "array")) {
-      _fn = function(path) {
-        if (deepGet(obj, path) === void 0) {
-          deepSet(obj, path, null, true);
+      _fn = function(extendPath) {
+        if (deepGet(obj, extendPath) === void 0) {
+          deepSet(obj, extendPath, null, true);
         }
       };
       for (_i = 0, _len = whitelist.length; _i < _len; _i++) {
-        path = whitelist[_i];
-        _fn(path);
+        extendPath = whitelist[_i];
+        _fn(extendPath);
       }
     }
     extension = false;

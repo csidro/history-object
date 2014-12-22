@@ -185,7 +185,7 @@ describe "ObjectHistory", () ->
 		it "should observe properties passed by (w/ extending)", () ->
 			@simple = a: 1, b: "test1", c: 1.234
 
-			o.observe( @simple, ["a", "c", "d", "e"], on )
+			o.observe( @simple, ["a", "c", "d", "e"], on, off )
 
 			
 			@simple.a = 2 
@@ -238,21 +238,21 @@ describe "ObjectHistory", () ->
 			@simple.b.should.be.equal "test4"
 			@simple.c.should.be.equal 1.234
 			@simple.d.should.be.equal 5
-			expect(@simple.e).to.be.undefined
+			expect(@simple.e).to.be.null
 
 			@simple.undo()
 			@simple.a.should.be.equal 2
 			@simple.b.should.be.equal "test4"
 			@simple.c.should.be.equal 1.234
-			expect(@simple.d).to.be.undefined
-			expect(@simple.e).to.be.undefined
+			expect(@simple.d).to.be.null
+			expect(@simple.e).to.be.null
 
 			@simple.undo()
 			@simple.a.should.be.equal 1
 			@simple.b.should.be.equal "test4"
 			@simple.c.should.be.equal 1.234
-			expect(@simple.d).to.be.undefined
-			expect(@simple.e).to.be.undefined
+			expect(@simple.d).to.be.null
+			expect(@simple.e).to.be.null
 
 			return
 		return
