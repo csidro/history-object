@@ -170,7 +170,7 @@ remove = ( store, obj, path, key ) ->
 	return
 
 
-module.exports = historyObject = {
+module.exports = historyObject =
 
 	config: 
 		# where to store the history states ("self"|{Object})
@@ -413,4 +413,3 @@ module.exports = historyObject = {
 				path.pop()
 				return
 		return
-}
